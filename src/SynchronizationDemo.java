@@ -1,8 +1,15 @@
 class Table {
-    // TODO: synchronized method void printTable(int n)
-    // Loop from 1 to 5 (as per sample) or 10
-    // Print n * i + " "
-    // Handle InterruptedException (try-catch Thread.sleep(400))
+    synchronized void printTable(int n) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.print((n * i) + " ");
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+        System.out.println();
+    }
 }
 
 class MyThread1 extends Thread {
@@ -11,7 +18,7 @@ class MyThread1 extends Thread {
         this.t = t;
     }
     public void run() {
-        // TODO: Call t.printTable(5)
+        t.printTable(5);
     }
 }
 
@@ -21,14 +28,18 @@ class MyThread2 extends Thread {
         this.t = t;
     }
     public void run() {
-        // TODO: Call t.printTable(100)
+        t.printTable(100);
     }
 }
 
 public class SynchronizationDemo {
     public static void main(String[] args) {
-        // TODO: Create Table object
-        // TODO: Create MyThread1 and MyThread2 objects passing the table object
-        // TODO: Start both threads
+        Table obj = new Table();
+
+        MyThread1 t1 = new MyThread1(obj);
+        MyThread2 t2 = new MyThread2(obj);
+
+        t1.start();
+        t2.start();
     }
 }
