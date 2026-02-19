@@ -1,14 +1,13 @@
 class Table {
     synchronized void printTable(int n) {
         for (int i = 1; i <= 5; i++) {
-            System.out.print((n * i) + " ");
+            System.out.print(n * i + " ");
             try {
                 Thread.sleep(400);
             } catch (InterruptedException e) {
-                System.out.println(e);
             }
         }
-        System.out.println();
+        System.out.print("\n");
     }
 }
 
@@ -40,6 +39,9 @@ public class SynchronizationDemo {
         MyThread2 t2 = new MyThread2(obj);
 
         t1.start();
+        try { t1.join(); } catch (Exception e) {}
+
         t2.start();
+        try { t2.join(); } catch (Exception e) {}
     }
 }
