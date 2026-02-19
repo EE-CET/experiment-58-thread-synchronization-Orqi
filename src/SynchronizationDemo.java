@@ -1,19 +1,18 @@
 class Table {
-    // synchronized ensures one thread finishes its loop before the other starts
+    // synchronized locks the 'obj' so threads don't mix their outputs
     synchronized void printTable(int n) {
         for (int i = 1; i <= 5; i++) {
-            System.out.print(n * i);
-            // Only add a space if it's not the last number in the sequence
-            if (i < 5) {
-                System.out.print(" ");
-            }
+            // This prints: "Number " (satisfying the trailing space requirement)
+            System.out.print(n * i + " ");
             try {
-                Thread.sleep(400);
+                Thread.sleep(400); 
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
         }
-        System.out.println(); // Move to the next line after the table is done
+        // Newline is inside the lock to prevent the next thread 
+        // from starting on the same line.
+        System.out.println(); 
     }
 }
 
@@ -40,8 +39,8 @@ public class SynchronizationDemo {
         MyThread1 t1 = new MyThread1(obj);
         MyThread2 t2 = new MyThread2(obj);
 
+        // Starting both simultaneously to let the monitor lock manage the queue
         t1.start();
-        t2.start(); 
-        // We start both; 'synchronized' handles the "one-at-a-time" rule.
+        t2.start();
     }
 }

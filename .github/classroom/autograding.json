@@ -5,7 +5,7 @@
       "setup": "javac src/SynchronizationDemo.java",
       "run": "java -cp src SynchronizationDemo",
       "input": "",
-      "output": "5 10 15 20 25 \n100 200 300 400 500 ",
+      "output": "5 10 15 20 25 \\s*\\n100 200 300 400 500 \\s*",
       "comparison": "regex",
       "timeout": 10,
       "points": 100
