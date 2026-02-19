@@ -7,7 +7,6 @@ class Table {
             } catch (InterruptedException e) {
             }
         }
-        System.out.println();
     }
 }
 
@@ -18,6 +17,7 @@ class MyThread1 extends Thread {
     }
     public void run() {
         t.printTable(5);
+        System.out.print("\n");
     }
 }
 
@@ -39,9 +39,9 @@ public class SynchronizationDemo {
         MyThread2 t2 = new MyThread2(obj);
 
         t1.start();
-        t1.join();   // ensures order
+        t1.join();
 
         t2.start();
-        t2.join();   // prevents extra output after
+        t2.join();
     }
 }
