@@ -2,10 +2,6 @@ class Table {
     synchronized void printTable(int n) {
         for (int i = 1; i <= 5; i++) {
             System.out.print(n * i + " ");
-            try {
-                Thread.sleep(400);
-            } catch (InterruptedException e) {
-            }
         }
     }
 }
@@ -16,7 +12,7 @@ class MyThread1 extends Thread {
 
     public void run() {
         t.printTable(5);
-        System.out.print("\n"); // newline only after first
+        System.out.print("\n");
     }
 }
 
@@ -26,7 +22,6 @@ class MyThread2 extends Thread {
 
     public void run() {
         t.printTable(100);
-        System.out.print(" "); // <-- IMPORTANT trailing space
     }
 }
 
