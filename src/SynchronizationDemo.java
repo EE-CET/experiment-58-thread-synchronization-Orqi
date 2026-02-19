@@ -12,7 +12,6 @@ class MyThread1 extends Thread {
 
     public void run() {
         t.printTable(5);
-        System.out.print("\n");
     }
 }
 
@@ -34,6 +33,8 @@ public class SynchronizationDemo {
 
         t1.start();
         t1.join();
+
+        System.out.print("\n");
 
         t2.start();
         t2.join();
