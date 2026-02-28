@@ -4,7 +4,7 @@ class Table {
         for (int i = 1; i <= 5; i++) {
             System.out.print(n * i + " ");
         }
-        System.out.println();
+        System.out.print("\n");
     }
 }
 
@@ -33,7 +33,7 @@ class MyThread2 extends Thread {
 }
 
 public class SynchronizationDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Table obj = new Table();
 
@@ -41,10 +41,8 @@ public class SynchronizationDemo {
         MyThread2 t2 = new MyThread2(obj);
 
         t1.start();
-        try {
-            t1.join();
-        } catch (InterruptedException e) {}
-
+        t1.join();   // force exact order
         t2.start();
+        t2.join();
     }
 }
