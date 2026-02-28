@@ -4,7 +4,7 @@ class Table {
         for (int i = 1; i <= 5; i++) {
             System.out.print(n * i + " ");
         }
-        System.out.print("\n");
+        System.out.println();
     }
 }
 
@@ -41,7 +41,7 @@ public class SynchronizationDemo {
         MyThread2 t2 = new MyThread2(obj);
 
         t1.start();
-        t1.join();   // force exact order
+        t1.join();
         t2.start();
         t2.join();
     }
