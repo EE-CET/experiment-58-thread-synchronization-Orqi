@@ -32,7 +32,7 @@ class MyThread2 extends Thread {
     }
 }
 
-public class Solution {
+public class SynchronizationDemo {
     public static void main(String[] args) throws Exception {
 
         Table obj = new Table();
