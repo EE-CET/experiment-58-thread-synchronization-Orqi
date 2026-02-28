@@ -45,6 +45,6 @@ public class SynchronizationDemo {
         t2.start();
         t2.join();
 
-        System.out.println();   // ← THIS fixes the grader
+        System.out.println();
     }
 }
